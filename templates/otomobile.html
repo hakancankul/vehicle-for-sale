@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <script type="text/javascript">
+    const otomobileImages = [];
+    const numbers = [65, 44, 12, 4];
+    var x = 0;
+
+    function addImg(Img){
+        otomobileImages.push(Img);
+    }
+
+    function next(){
+             document.getElementById('otoImg')
+             .src=otomobileImages[x];
+             x++;
+             x=x%numbers.length;
+    }
+
+    
+  
+  </script>
+
+{% endblock head %}
+
+
+
+{% block body %}
+
+
+{% if otomobile %}
+
+{% for image in images %}
+        <script type="text/javascript" language="JavaScript">
+         addImg("templates/otomobileImg/{{image.img}}"); 
+        </script>
+        
+         
+{% endfor %}
+
+
+
+<h4 > {{otomobile.title}}</h4>
+<hr>
+ 
+<div style="border-style: double; background-color: #ABBAEA;
+  width: 900px;margin-top: 10px;">
+  
+  <div style="border-style: double; height: 500px;
+  width: 500px;float: left;margin-top: 10px;">
+	<!--image-->
+  <img id="otoImg" onclick=next(); src="templates\otomobileImg\{{otomobile.cover_image}}"  width="500" height="500">
+ 
+  
+  
+
+  </div>
+  
+  
+  <div style="border-style: double; height: 500px;background-color: #FBD603;
+  width: 350px;float: right;margin-top: 10px;">
+
+	<!--price-->
+    Price: {{otomobile.price}}<br>
+    Brand: {{otomobile.brand}}<br>
+    Series: {{otomobile.series}}<br>
+    Model: {{otomobile.model}}<br>
+    Year: {{otomobile.year}}<br>
+    Fuel: {{otomobile.fuel}}<br>
+    Gear: {{otomobile.gear}}<br>
+    Color: {{otomobile.color}}<br>
+    Km: {{otomobile.km}}<br>
+    Body Type: {{otomobile.body_type}}<br>
+    Engine Power: {{otomobile.engine_power}}<br>
+    Engine Volume: {{otomobile.engine_volume}}<br>
+    Traction: {{otomobile.traction}}<br>
+    City: {{otomobile.city}}<br>
+    District: {{otomobile.district}}
+  </div>
+  
+  
+  <div style="border-style: double; 
+  width: 900px;float: left;margin-top: 30px;background-color: #EBEBEB; ;">
+
+	<!--desc-->
+    {{otomobile.description|safe}}
+
+  </div>
+
+  </div>
+
+{% else %}
+<div class = "alert alert-warning">
+    There is no such otomobile advert.
+</div>
+{% endif %}
+
+{% endblock body %}
+
+

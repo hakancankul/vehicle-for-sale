@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+
+{% block head %}
+<link rel="stylesheet" href="templates/styles/o.css">
+{% endblock head %}
+
+{% block body %}
+<h3>Dashboard</h3>
+
+<small>Welcome, {{session["username"]}}</small>
+<hr>
+
+
+
+
+<div class="dropdown">
+  <button class="btn btn-info dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add Advert
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="addotomobile">Add Otomobile</a>
+    <a class="dropdown-item" href="addmotorbike">Add Motorbike</a>
+    <a class="dropdown-item" href="addseavehicle">Add Sea Vehicle</a>
+    <a class="dropdown-item" href="addaircraft">Add Aircraft</a>
+  </div>
+</div>
+<br><br><br><br><br><br><br>
+
+{% if otomobiles %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Series</th>
+            <th scope="col">Model</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for otomobile in otomobiles %}
+        <tr>
+            <th scope="row">{{otomobile.id}}</th>
+            <td><a href="/otomobile/{{otomobile.id}}">{{otomobile.brand}}</a></td>
+            <td>{{otomobile.series}}</td>
+            <td>{{otomobile.model}}</td>
+            <td><a href="/editotomobile/{{otomobile.id}}" class = "btn btn-success">Update</a></td>
+            <td><a href="/deleteotomobile/{{otomobile.id}}" class = "btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+        
+        
+        </tbody>
+    </table> 
+{% else %}
+{% endif %}
+      
+
+{% endblock body %}
