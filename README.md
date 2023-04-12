@@ -1,6 +1,6 @@
 # vehicle-for-sale database management system
 An online vehicle sale application includes car, motorbike, aircraft and watercraft
-![home]()
+
 ![intro](https://github.com/hakancankul/vehicle-for-sale/blob/main/images/introduction.png)
 ![techs](https://github.com/hakancankul/vehicle-for-sale/blob/main/images/techs.png)
 ![home](https://github.com/hakancankul/vehicle-for-sale/blob/main/images/home.png)
